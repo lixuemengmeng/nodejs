@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>index</title>
+    <link rel="stylesheet" href="../stylesheets/style.css"/>
+    <link rel="stylesheet" href="../stylesheets/index.css"/>
+  </head>
+  <body>
+  <div id="header">
+    <div class="wrapper">
+      <div id="logo">LOGO
+          <% if(user){%>
+          <a href="/add">添加文章</a>
+          <%
+          }
+           %>
+      </div>
+      <div id="lianjie">
+       <%
+       if(user){
+       %>
+        欢迎:<%= user.name%>,<a href="/logout">退出<a>
+
+        <%
+        }else{
+        %>
+          <a href="/login">登录</a>  | <a href="/regist">注册</a>
+       <%
+       }
+       %>
+      </div>
+    </div>
+</div>
+  </div>
+  <div id="contenet" >
+      <div class="wrapper">
+          <ul id="contenet-ul">
+              <%
+                  for(var i=0;i<blg.length;i++){
+                  //console.log(blg);
+                      var b=blg[i];
+              %>
+              <li class="content-li">
+                  <div id="content-left">
+                      <div id="left">
+                          <h2><a href="/view?id=<%= b.blogid%>&hit=<%= b.hits%>"><%=b.title%></a></h2>
+                          <p><%=b.content%></p>
+                      </div>
+                      <div id="right">
+                          <p><%=b.name%></p>
+                          <p><%=b.time%></p>
+                          <%
+                          if(user){
+                              if(user.userid==b.nameid){
+
+                          %>
+                          <a href="/delete?id=<%= b.blogid%>">删除</a>
+                          <p><a href="/update?bid=<%= b.blogid%>&con=<%= b.content%>&tit=<%= b.title%>">更改</a></p>
+                          <%
+                                }
+                          }
+                          %>
+
+                      </div>
+
+                  </div>
+
+                  <div id="contenet-right">
+                      211
+                  </div>
+
+              </li>
+
+              <%
+              }
+               %>
+
+          </ul>
+
+      </div>
+  </div>
+  </body>
+</html>

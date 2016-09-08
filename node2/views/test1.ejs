@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<%
+    var a=[];
+    var b=[];
+    var c=[];
+  %>
+<div>
+    就绪队列：
+        <%= for(var i=0;i< a.length;i++){%>
+        console.log(<%=a[i].id%>);
+    <%
+    }
+     %>
+</div>
+<div>
+    执行队列：
+    <%= for(var i=0;i< b.length;i++){%>
+    console.log(<%=b[i].id%>);
+    <%
+    }
+    %>
+</div>
+<div>
+    阻塞队列：
+    <%= for(var i=0;i< c.length;i++){%>
+    console.log(<%=c[i].id%>);
+    <%
+    }
+    %>
+</div>
+<a href="/addprocess">创建进程</a>
+<a href="">结束进程</a>
+<a href="">进程阻塞</a>
+<a href="">激活进程</a>
+<a href="">调度进程</a>
+<a href="">时间片到</a>
+</body>
+</html>
